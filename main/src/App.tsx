@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode, useState } from 'react';
+import React, { CSSProperties, ReactNode, useEffect, useState } from 'react';
 
 interface ScenarioProps {
   message: string | ReactNode;
@@ -28,6 +28,19 @@ function Scenario(props: ScenarioProps) {
     onSubmit,
     ...rest
   } = props;
+
+  useEffect(() => {
+    const handleEscapeClose = () => {
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && onClose) {
+          onClose();
+        }
+      })
+    }
+    return () => {
+      window.removeEventListener("keydown", handleEscapeClose);
+    };
+  }, [onClose])
 
   return (
     <React.Fragment>
