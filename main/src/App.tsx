@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode } from 'react';
 
 interface ScenarioProps {
   message: string | ReactNode;
@@ -8,8 +8,8 @@ interface ScenarioProps {
   closeLabel?: string;
   style?: CSSProperties;
   icon?: string;
-  className: string;
-  'data-testid': string;
+  className?: string;
+  'data-testid'?: string;
   onClose?: () => void;
   onSubmit: () => void;
 }
@@ -37,9 +37,13 @@ function Scenario(props: ScenarioProps) {
       className={`container ${className}`}
     >
       <header>
-        <div>{header ?? 'Confirmation'}</div>
+        <div className='header-label'>
+          {icon && <i>{icon}</i>}
+          <div>{header ?? 'Confirmation'}</div>
+        </div>
         <button>&times;</button>
       </header>
+      <div className="modal-message">{message}</div>
     </div>
   );
 }
@@ -47,7 +51,12 @@ function Scenario(props: ScenarioProps) {
 function App() {
   return (
     <>
-      <Scenario header="confirm" />
+      <Scenario
+        visible
+        header="confirm"
+        message="Please confirm scenario"
+        onSubmit={() => ''}
+      />
     </>
   );
 }
