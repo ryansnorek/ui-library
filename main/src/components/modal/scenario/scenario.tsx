@@ -1,20 +1,4 @@
-// import { ScenarioProps } from './scenario.types';
-
-import { CSSProperties, ReactNode } from 'react';
-
-interface ScenarioProps {
-  message: string | ReactNode;
-  visible: boolean;
-  header?: string;
-  submitLabel?: string;
-  closeLabel?: string;
-  style?: CSSProperties;
-  icon?: string;
-  className: string;
-  'data-testid': string;
-  onClose?: () => void;
-  onSubmit: () => void;
-}
+import { ScenarioProps } from "./scenario.types";
 
 export function Scenario(props: ScenarioProps) {
   const {
