@@ -96,8 +96,3 @@ export function Scenario(props: ScenarioProps) {
     </React.Fragment>
   );
 }
-
-
-export function C() {
-  return <Scenario />
-}
