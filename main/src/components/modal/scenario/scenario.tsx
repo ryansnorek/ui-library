@@ -1,6 +1,14 @@
 import React, { useEffect } from "react";
 import { ScenarioProps } from "./scenario.types";
 
+/*
+Notes: 
+Definitely a lot of work is still needed. My intention is for this to be a fixed overlay component but it's 
+missing the styles for that. 
+
+The modal folder is setup in a way that allows developers to add additional modal components. This should help scalability. 
+*/
+
 /**
  * Renders a confirmation modal dialog.
  *

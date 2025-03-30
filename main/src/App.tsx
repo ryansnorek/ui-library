@@ -1,5 +1,13 @@
 import React, { CSSProperties, ReactNode, useEffect, useState } from 'react';
 
+/* 
+ Notes:
+
+ I was having trouble importing and rendering the Scenario component so I defined it here also. 
+
+ The overall project assumes a theme in place so we can pass icon classes. 
+*/
+
 interface ScenarioProps {
   message: string | ReactNode;
   visible: boolean;

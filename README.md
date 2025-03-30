@@ -1,3 +1,13 @@
+## General Author Notes
+A couple more libraries that could be useful for developers are Prettier (to preserve git history) and Sonarqube (to help maintain the code).
+
+I added Notes to the App and Scenario files that reiterate some of the issues below.
+
+### Issues
+- Scenario.spec.tsx renderWithUser function has a type error
+- The App.tsx is unable to import and render the Scenario.tsx (components folder) for some reason.
+
+
 # ui-library
 Reusable component library
 

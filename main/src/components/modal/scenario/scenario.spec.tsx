@@ -3,6 +3,16 @@ import userEvent from '@testing-library/user-event';
 import Scenario from './scenario';
 import type { ScenarioProps } from './scenario.types';
 
+
+/* 
+ Notes: 
+
+ Not sure why the renderWithUser has a type error. Might be a configuration issue. 
+ 
+ Unfortunately, I didn't get a chance to run the file before running out of time. 
+ Some things I would consider adding in a real project is mock services and test utils.
+*/
+
 const initialProps: ScenarioProps = {
   onClose: jest.fn(),
 };
@@ -45,7 +55,7 @@ describe('Modal', () => {
       expect(mockClose).toHaveBeenCalledTimes(1);
     });
 
-    test('calls onClock action when clicking outside of the modal', async () => {
+    test('calls onClick action when clicking outside of the modal', async () => {
       const { user } = renderWithUser(
         <Scenario data-testid="mockId" onClose={mockClose} />
       );
