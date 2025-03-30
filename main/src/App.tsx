@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from 'react';
+import React, { CSSProperties, ReactNode, useState } from 'react';
 
 interface ScenarioProps {
   message: string | ReactNode;
@@ -30,32 +30,47 @@ function Scenario(props: ScenarioProps) {
   } = props;
 
   return (
-    <div
-      data-testid={rest['data-testid']}
-      role="dialog"
-      style={style}
-      className={`container ${className}`}
-    >
-      <header>
-        <div className='header-label'>
-          {icon && <i>{icon}</i>}
-          <div>{header ?? 'Confirmation'}</div>
+    <React.Fragment>
+      {visible && (
+        <div
+          data-testid={rest['data-testid']}
+          role="dialog"
+          style={style}
+          className={`container ${className ?? ''}`}
+        >
+          <header>
+            <div className="header-label">
+              {icon && <i>{icon}</i>}
+              <div>{header ?? 'Confirmation'}</div>
+            </div>
+            <button onClick={onClose}>&times;</button>
+          </header>
+          <div className="modal-message">{message}</div>
+          <div className="button-bar">
+            <div className="button-container">
+              <button onClick={onClose}>{closeLabel ?? 'Cancel'}</button>
+              <button onClick={onSubmit}>{submitLabel ?? 'Confirm'}</button>
+            </div>
+          </div>
         </div>
-        <button>&times;</button>
-      </header>
-      <div className="modal-message">{message}</div>
-    </div>
+      )}
+    </React.Fragment>
   );
 }
 
 function App() {
+  const [scenarioModalVisible, setScenarioModalVisible] = useState(false);
   return (
     <>
+      <button onClick={() => setScenarioModalVisible(true)}>
+        confirm scenario
+      </button>
       <Scenario
-        visible
+        visible={scenarioModalVisible}
         header="confirm"
         message="Please confirm scenario"
         onSubmit={() => ''}
+        onClose={() => setScenarioModalVisible(false)}
       />
     </>
   );
